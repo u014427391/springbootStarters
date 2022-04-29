@@ -1,4 +1,4 @@
-package com.example.resttemplate.configuration;
+package org.framework.starter.resttemplate.configuration;
 
 
 import org.springframework.boot.web.client.RestTemplateCustomizer;

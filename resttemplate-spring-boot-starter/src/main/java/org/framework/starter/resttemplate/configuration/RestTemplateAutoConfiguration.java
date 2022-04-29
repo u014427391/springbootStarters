@@ -1,4 +1,4 @@
-package com.example.resttemplate.configuration;
+package org.framework.starter.resttemplate.configuration;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +9,7 @@ import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
-public class RestTemplateConfiguration {
+public class RestTemplateAutoConfiguration {
 
     @Bean
     public CustomRestTemplateCustomizer customRestTemplateCustomizer() {

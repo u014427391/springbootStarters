@@ -1,4 +1,4 @@
-package com.example.resttemplate.util;
+package org.framework.starter.resttemplate.util;
 
 
 import lombok.extern.slf4j.Slf4j;
