@@ -35,6 +35,12 @@
             <optional>true</optional>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.13</version>
+        </dependency>
+
 
         <dependency>
             <groupId>cn.hutool</groupId>
@@ -104,7 +110,7 @@
                 </executions>
             </plugin>
 
-            <!-- 源码打包插件 -->
+            <!-- 源码打包的插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
