@@ -1,4 +1,4 @@
-package org.framework.starter.resttemplate.configuration;
+package org.framework.starter.resttemplate.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

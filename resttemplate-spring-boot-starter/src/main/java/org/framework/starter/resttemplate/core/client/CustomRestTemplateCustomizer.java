@@ -1,4 +1,4 @@
-package org.framework.starter.resttemplate.configuration;
+package org.framework.starter.resttemplate.core.client;
 
 
 import org.springframework.boot.web.client.RestTemplateCustomizer;

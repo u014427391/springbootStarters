@@ -1,4 +1,4 @@
-package org.framework.starter.resttemplate.configuration;
+package org.framework.starter.resttemplate.core.client;
 
 import cn.hutool.core.convert.Convert;
 import lombok.extern.slf4j.Slf4j;
