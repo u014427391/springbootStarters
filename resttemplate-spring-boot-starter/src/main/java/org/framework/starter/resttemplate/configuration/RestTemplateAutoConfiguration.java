@@ -114,21 +114,21 @@ public class RestTemplateAutoConfiguration {
                     .register("http", PlainConnectionSocketFactory.getSocketFactory())
                     .register("https", sslConnectionSocketFactory).build();
 
-            //使用Httpclient连接池的方式配置(推荐)，同时支持netty，okHttp以及其他http框架
+            // 使用Httpclient连接池的方式配置(推荐)，同时支持netty，okHttp以及其他http框架
             PoolingHttpClientConnectionManager poolingHttpClientConnectionManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
-            // 最大连接数
+            // 设置最大连接数
             poolingHttpClientConnectionManager.setMaxTotal(httpClientPoolProperties.getMaxTotalConnect());
-            // 同路由并发数
+            // 设置同路由并发数
             poolingHttpClientConnectionManager.setDefaultMaxPerRoute(httpClientPoolProperties.getMaxConnectPerRoute());
-            //配置连接池
+            // 配置连接池
             httpClientBuilder.setConnectionManager(poolingHttpClientConnectionManager);
-            // 重试次数
+            // 设置重试次数
             httpClientBuilder.setRetryHandler(new DefaultHttpRequestRetryHandler(httpClientPoolProperties.getRetryTimes(), true));
 
-            //设置默认请求头
+            // 设置默认请求头
             List<Header> headers = getDefaultHeaders();
             httpClientBuilder.setDefaultHeaders(headers);
-            //设置长连接保持策略
+            // 设置长连接保持策略
             httpClientBuilder.setKeepAliveStrategy(connectionKeepAliveStrategy());
             return httpClientBuilder.build();
         } catch (KeyManagementException | NoSuchAlgorithmException | KeyStoreException e) {
@@ -160,13 +160,13 @@ public class RestTemplateAutoConfiguration {
                 }
             }
             HttpHost target = (HttpHost) context.getAttribute(HttpClientContext.HTTP_TARGET_HOST);
-            //如果请求目标地址,单独配置了长连接保持时间,使用该配置
+            // 如果请求目标地址,单独配置了长连接保持时间,使用该配置
             Optional<Map.Entry<String, Integer>> any = Optional.ofNullable(httpClientPoolProperties.getKeepAliveTargetHost())
                     .orElseGet(HashMap::new)
                     .entrySet().stream()
                     .filter(e -> e.getKey().equalsIgnoreCase(target.getHostName()))
                     .findAny();
-            //否则使用默认长连接保持时间
+            // 否则使用默认长连接保持时间
             return any.map(en -> en.getValue() * 1000L)
                     .orElse(httpClientPoolProperties.getKeepAliveTime() * 1000L);
         };
